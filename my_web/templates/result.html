@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block title %}Result {% endblock %}
+
+{% block page_content %}
+    <div class="row">
+        <h2 style="color:#045FB4 ">Rita Ma<span class="glyphicon glyphicon-search" aria-hidden="true"></span></h2>
+        <form role="form" name="form" action="/result" method="post">
+            <div class="input-group">
+                <input type="text" class="form-control" name="keyword" placeholder="Search for...">
+                <span class="input-group-btn">
+                    <button type="submit" class="btn btn-primary">搜索</button>
+                </span>
+            </div>
+        </form>
+    </div>
+
+    <div class="panel">
+    {% if not results %}
+        <div class="row">
+            <p class="lead">诶呀!没有搜索结果...</p>
+        </div>
+    {% else %}
+        {% for result in results %}
+            <div class="row">
+                <p class="lead"><a href="{{ result.get('url') }}">{{ result.get('title') }}</a> </p>
+                <p>{{ result.get('content') }}</p>
+            </div>
+        {% endfor %}
+    {% endif %}
+    </div>
+{% endblock %}

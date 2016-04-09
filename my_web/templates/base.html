@@ -1,0 +1,10 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Flask{% endblock %}
+{% block content %}
+<div class="container">
+<!--自己定义了一个块,在这个块里可以添加网页内容-->
+  {% block page_content %}{% endblock %}
+</div>
+{% endblock %}
+
+
